@@ -1,0 +1,244 @@
+/* Personal adaptation of Massively. Keep the original layout and responsive grid. */
+body, input, select, textarea { font-family: Georgia, "Songti SC", "SimSun", serif; }
+h1, h2, h3, h4, h5, h6, .button, #nav, #header .logo, summary { font-family: "Segoe UI", "Microsoft YaHei", sans-serif; }
+html { scroll-behavior: smooth; }
+#intro h1 { letter-spacing: .08em; line-height: 1.3; }
+#intro p { font-style: normal; }
+.eyebrow { display: block; font-family: "Segoe UI", sans-serif; font-size: .78rem; font-weight: 700; letter-spacing: .28em; margin-bottom: 1.5rem; }
+#main .section-heading { text-align: center; padding: 4rem 2rem 2rem; }
+.section-heading p { text-align: center; color: #717981; margin-bottom: 0; }
+.bio { max-width: 42rem; margin: 0 auto 2rem; }
+#about, #works, #footer { scroll-margin-top: 1rem; }
+.posts .image img { aspect-ratio: 508 / 310; object-fit: cover; }
+details { text-align: left; }
+summary { width: fit-content; margin: 0 auto; border: 2px solid #212931; padding: .65rem 1.5rem; cursor: pointer; font-size: .85rem; font-weight: 700; }
+summary:hover { color: #167d9a; border-color: #167d9a; }
+.project-detail { margin-top: 1.5rem; padding: 1.5rem; background: #f5f5f5; }
+.project-detail p:last-child { margin-bottom: 0; }
+#footer p { overflow-wrap: anywhere; }
+a:focus-visible, summary:focus-visible { outline: 3px solid #18bfef; outline-offset: 5px; }
+.skip-link { position: fixed; top: -6rem; left: 1rem; padding: .5rem 1rem; z-index: 10001; background: white; color: #212931; }
+.skip-link:focus { top: 1rem; }
+@media screen and (max-width: 736px) { #intro h1 { font-size: 2.8rem; } #header .logo { font-size: 1.35rem; } #main .section-heading { padding: 3rem 1.5rem 2rem; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+#footer.portfolio-footer { display: flex; align-items: center; justify-content: space-between; padding: 2rem 3rem; gap: 1.5rem; }
+#footer.portfolio-footer p { margin: 0; }
+#photography, #design { scroll-margin-top: 1rem; }
+#main > #photography { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+#main > #photography > article { width: auto; padding: 2rem 1.25rem; border-left: solid 1px #eeeeee; }
+#main > #photography > article:nth-child(odd) { border-left-width: 1px; }
+#photography .image { margin: 0 0 1.5rem; }
+#photography .empty-gallery-slot .photo-placeholder { margin: 0; }
+#photography .album-description { min-height: 3.6rem; display: flex; align-items: center; justify-content: center; }
+#photography .actions { margin-bottom: 0; }
+#photography .button { padding: 0 1rem; white-space: nowrap; }
+@media (max-width: 980px) { #main > #photography { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 480px) {
+ #main > #photography { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+ #main > #photography > article { width: auto; padding: 1.25rem .6rem; }
+ #photography .button { padding: 0 .55rem; font-size: .65rem; }
+ #photography .album-description { font-size: .78rem; line-height: 1.6; }
+}
+@media (max-width: 736px) { #footer.portfolio-footer { flex-direction: column; padding: 2rem; } }
+/* Photography album */
+.posts .image.album-cover img { width: 100%; height: auto; aspect-ratio: 508 / 310; object-fit: contain; background: #f5f5f5; }
+.posts .image.design-cover img { width: 100%; height: auto; aspect-ratio: 508 / 310; object-fit: contain; object-position: top center; background: #f5f5f5; }
+.design-posts { display: grid !important; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.design-posts > article { width: auto !important; padding: 2rem 1.25rem !important; border-left: solid 1px #eeeeee; }
+.design-posts > article:nth-child(odd) { border-left-width: 1px !important; }
+.design-posts header { margin-bottom: 1.25rem; }
+.design-posts .image { margin: 0 0 1.5rem; }
+.design-posts .image.design-cover { position: relative; overflow: hidden; background-color: #fff; background-image: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), var(--design-cover-bg); background-position: center; background-size: cover; background-repeat: no-repeat; }
+.design-posts .image.design-cover::before { display: none; }
+.design-posts .image.design-cover img,
+.design-posts .design-placeholder { width: 100%; aspect-ratio: 3 / 4; object-fit: contain; object-position: top center; background: #f5f5f5; }
+.design-posts .image.design-cover img { position: relative; z-index: 1; background: transparent !important; }
+.design-posts .actions { margin-bottom: 0; }
+.design-posts .button { padding: 0 1.2rem; white-space: nowrap; }
+.design-placeholder { display: block; }
+@media (max-width: 980px) { .design-posts { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .design-posts { grid-template-columns: 1fr; } }
+
+/* Full design viewer pages. */
+.design-viewer { max-width: 58rem; margin: 0 auto; }
+.design-viewer img { display: block; width: 100%; height: auto; }
+.design-viewer-return { display: flex; justify-content: space-between; gap: 1rem; margin: 3rem 0 0; }
+.design-detail-page #main { position: relative; isolation: isolate; overflow: hidden; }
+.design-detail-page #main::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--design-bg) top center / cover no-repeat; opacity: .5; }
+.design-detail-page #main > .post { background: rgba(255,255,255,.78); }
+.design-support-image { margin: 0 0 3rem; }
+.design-support-image img { width: 100%; height: auto; }
+.design-support-image figcaption { padding-top: .8rem; color: #717981; font-size: .85rem; letter-spacing: .08em; text-align: center; }
+@media (max-width: 480px) { .design-viewer-return { flex-direction: column; } }
+.posts .album-description { text-align: center; }
+.album-page #wrapper { background: rgba(30,37,45,.55); }
+.album-page #header { height: 12rem; padding-bottom: 3rem; }
+.album-page #header .logo { opacity: 1; visibility: visible; transform: none; }
+.album-heading { margin: 4rem 0 3rem !important; }
+.album-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3rem 2rem; }
+.album-grid figure { margin: 0; min-width: 0; }
+.album-grid a { display: block; border: 0; }
+.album-grid img { display: block; width: 100%; height: auto; }
+.album-grid figcaption { display: flex; gap: 1rem; padding-top: .8rem; font-size: .85rem; color: #717981; }
+.album-grid figcaption span { font-family: "Segoe UI", sans-serif; letter-spacing: .15em; }
+.landscape-album-grid figure.is-portrait a { width: 50%; margin-right: auto; margin-left: auto; }
+.landscape-album-grid figure.is-portrait figcaption { width: 50%; margin-right: auto; margin-left: auto; }
+.album-return { text-align: center; margin-top: 4rem; }
+@media (max-width: 736px) { .album-grid { grid-template-columns: 1fr; gap: 2rem; } .album-page #header { height: 9rem; padding-bottom: 2rem; } .album-heading { margin-top: 3rem !important; } }
+
+
+/* Homepage hero: image opacity 45%, independent of foreground text. */
+#intro { isolation: isolate; background-color: #212931; }
+#intro::before {
+ content: "";
+ position: absolute;
+ inset: 0;
+ z-index: -1;
+ background: url("../../images/hero-street.jpg") center center / cover no-repeat;
+ opacity: .45;
+ pointer-events: none;
+}
+
+
+/* Self introduction below the homepage hero. */
+#about .about-title { font-size: 2rem; line-height: 1.5; letter-spacing: .12em; }
+#about .about-content { max-width: 48rem; margin: 0 auto 3rem; text-align: left; }
+#about .about-lead { font-size: 1.15rem; line-height: 2; margin-bottom: 2.5rem; }
+#about .about-content section { margin: 0 0 2rem; }
+#about .about-content h3 { font-size: 1.15rem; font-weight: 900; letter-spacing: .06em; margin: 0 0 .8rem; }
+#about .about-content p { text-align: left; line-height: 2; margin: 0 0 1rem; overflow-wrap: anywhere; }
+#about .about-content ul { padding-left: 1.4rem; margin-bottom: 1rem; }
+#about .about-content li { line-height: 2; margin-bottom: .6rem; }
+@media (max-width: 736px) { #about .about-lead { font-size: 1.05rem; } #about .about-content h3 { font-size: 1.05rem; } }
+
+/* Editorial introduction layout, scoped to About. */
+#about { background: #faf9f6; }
+#about > header.major { margin-bottom: 2.5rem; }
+#about .about-content { max-width: 60rem; }
+#about .about-lead { max-width: 45rem; margin: 0 auto 3.5rem; font-size: 1.3rem; line-height: 2; text-align: center; color: #52565a; }
+#about .about-lead strong { color: #212931; font-weight: 700; }
+#about .ability-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+#about .about-content .ability-card { margin: 0; padding: 2rem; border: 1px solid #e1dfd8; background: #fff; min-width: 0; }
+#about .ability-meta { display: flex; align-items: center; gap: .8rem; margin-bottom: 1.5rem; font: 700 .65rem/1.5 "Segoe UI", sans-serif; letter-spacing: .16em; color: #8a7c67; }
+#about .ability-number { font-size: 1.5rem; font-weight: 400; letter-spacing: 0; color: #b1a48f; }
+#about .ability-card h3 { font-size: 1.3rem; margin-bottom: 1.2rem; }
+#about .ability-card p, #about .ability-card li { font-size: .95rem; line-height: 1.95; color: #555b60; }
+#about .ability-card p:last-child { margin-bottom: 0; }
+#about .ability-card ul { list-style: square; margin-bottom: 0; }
+#about .ability-card li::marker { color: #9b896c; }
+#about .about-content .about-summary { margin: 2rem 0 0; border-left: 3px solid #a28f70; background: #efede7; padding: 2rem 2.5rem; }
+#about .about-summary h3 { font-size: 1.1rem; }
+#about .about-summary p { margin: 0; color: #4c5155; }
+@media (max-width: 980px) { #about .about-content .ability-card { padding: 1.5rem; } }
+@media (max-width: 736px) {
+ #about .ability-grid { grid-template-columns: 1fr; gap: 1rem; }
+ #about .about-lead { font-size: 1.1rem; text-align: left; margin-bottom: 2rem; }
+ #about .about-content .about-summary { padding: 1.5rem; }
+ #about .ability-card h3 { font-size: 1.15rem; }
+}
+
+/* Centered, weighted introduction with semantic emphasis. */
+#about .about-content { font-family: "Segoe UI", "Microsoft YaHei", sans-serif; font-weight: 600; }
+#about .about-content .about-lead,
+#about .about-content h3,
+#about .about-content p,
+#about .about-content li { text-align: center; }
+#about .about-content p,
+#about .about-content li { word-break: normal; overflow-wrap: anywhere; text-wrap: pretty; line-height: 2.05; }
+#about .about-content h3,
+#about .about-content .about-lead { text-wrap: balance; }
+#about .ability-meta { justify-content: center; }
+#about .about-content h3 { font-weight: 900; }
+#about .about-highlight { font-weight: 800; color: #272c30; text-decoration: underline; text-decoration-color: #c8b89c; text-decoration-thickness: 2px; text-underline-offset: .25em; }
+#about .ability-card p { margin-bottom: 1.2rem; }
+#about .ability-card ul { list-style: none; padding: 0; }
+#about .ability-card li { padding: .8rem 0; margin: 0; border-top: 1px solid #eeeae3; }
+#about .about-summary p + p { margin-top: .8rem; }
+
+/* Keep the introductory sentence centered on one line. */
+#about .about-content { container-type: inline-size; }
+#about .about-content .about-lead {
+ max-width: none;
+ width: 100%;
+ text-align: center;
+ white-space: nowrap;
+ text-wrap: nowrap;
+ font-size: min(1.3rem, 1.85cqi);
+ letter-spacing: 0;
+}
+
+/* Additional photography slots retain the existing cover dimensions. */
+.posts .photo-placeholder { width: 100%; aspect-ratio: 508 / 310; margin: 2.5rem 0; display: flex; align-items: center; justify-content: center; background: #f5f5f5; color: #989b9e; font: 700 .8rem/1.5 "Segoe UI", sans-serif; letter-spacing: .18em; }
+
+/* Viewport-midline preview effect, limited to the About section. */
+#about .about-focus-text {
+ opacity: var(--about-opacity, 1);
+ filter: brightness(var(--about-brightness, 1));
+ transform: scale(var(--about-scale, 1));
+ transform-origin: center;
+ will-change: opacity, filter, transform;
+}
+.about-midline {
+ position: fixed;
+ left: 0;
+ right: 0;
+ top: 50vh;
+ z-index: 10000;
+ height: 1px;
+ pointer-events: none;
+ background: linear-gradient(90deg, transparent 5%, rgba(162,143,112,.42) 25%, rgba(162,143,112,.42) 75%, transparent 95%);
+ opacity: 0;
+ transition: opacity .25s ease;
+}
+.about-midline.is-visible { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+ #about .about-focus-text { transform: none !important; }
+}
+
+/* Landscape section at the end of the portfolio. */
+.landscape-heading { padding-bottom: 2rem !important; }
+.landscape-heading h2 { margin: .6rem 0 .8rem; }
+.landscape-heading p { margin: 0; color: #717981; }
+.landscape-carousel { position: relative; overflow: hidden; padding: 2rem 3rem 4rem; background: #f5f2ed; }
+.landscape-stage { position: relative; height: clamp(19rem, 43vw, 35rem); max-width: 76rem; margin: 0 auto; }
+.landscape-card { position: absolute; top: 50%; overflow: hidden; margin: 0; padding: 0; border: 0; border-radius: .25rem; background: #ddd; box-shadow: 0 1.2rem 2.8rem rgba(36,31,25,.18); transform: translateY(-50%); transition: transform .65s cubic-bezier(.22,.61,.36,1), opacity .65s ease; }
+.landscape-card img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.landscape-card-current { left: 50%; z-index: 3; width: 64%; height: 88%; padding: .8rem .8rem 2.7rem; background: #fff; transform: translate(-50%,-50%); box-shadow: 0 1.5rem 3.5rem rgba(36,31,25,.25); }
+.landscape-card-current.is-portrait { width: 36%; height: 96%; }
+.landscape-card-current figcaption { position: absolute; right: 1rem; bottom: .55rem; color: #69645d; font: 700 .68rem/1.4 "Segoe UI", sans-serif; letter-spacing: .16em; }
+.landscape-card-left, .landscape-card-right { z-index: 1; width: 42%; height: 70%; cursor: pointer; }
+.landscape-card-left.is-portrait, .landscape-card-right.is-portrait { width: 25%; height: 82%; }
+.landscape-card-left { left: 0; opacity: 1; -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,.5), rgba(0,0,0,.8)); mask-image: linear-gradient(to right, rgba(0,0,0,.5), rgba(0,0,0,.8)); }
+.landscape-card-right { right: 0; opacity: 1; -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,.5), rgba(0,0,0,.8)); mask-image: linear-gradient(to left, rgba(0,0,0,.5), rgba(0,0,0,.8)); }
+.landscape-carousel.is-changing .landscape-card { transform: translate(1.2rem,-50%); opacity: .45; }
+.landscape-carousel.is-changing .landscape-card-current { transform: translate(calc(-50% + 1.2rem),-50%); }
+.landscape-arrow { position: absolute; top: 45%; z-index: 6; width: 3.2rem; height: 3.2rem; padding: 0; border: 0; border-radius: 50%; background: rgba(255,255,255,.9); color: #34302b !important; font-size: 1.25rem; line-height: 3.2rem; box-shadow: 0 .5rem 1.5rem rgba(0,0,0,.12); }
+.landscape-prev { left: 1.2rem; }
+.landscape-next { right: 1.2rem; }
+.landscape-progress { width: min(30rem,70%); height: 2px; margin: 1.5rem auto 0; background: #d8d2ca; }
+.landscape-progress span { display: block; width: 10%; height: 100%; background: #585149; transition: transform .55s ease; transform-origin: left; }
+.landscape-actions { margin: 2.2rem 0 0; }
+@media (max-width: 736px) {
+ .landscape-carousel { padding: 1.5rem 1rem 3rem; }
+ .landscape-stage { height: 20rem; }
+ .landscape-card-current { width: 78%; height: 78%; padding: .5rem .5rem 2.2rem; }
+ .landscape-card-current.is-portrait { width: 58%; height: 92%; }
+ .landscape-card-left, .landscape-card-right { width: 48%; height: 58%; }
+ .landscape-card-left.is-portrait, .landscape-card-right.is-portrait { width: 34%; height: 72%; }
+ .landscape-arrow { top: 43%; width: 2.6rem; height: 2.6rem; line-height: 2.6rem; }
+ .landscape-prev { left: .35rem; }
+ .landscape-next { right: .35rem; }
+}
+
+/* Personal signature in place of the template credit. */
+#copyright .copyright-signature {
+ display: inline-block;
+ color: rgba(255,255,255,.62);
+ font-family: "Brush Script MT", "Segoe Script", "Snell Roundhand", cursive;
+ font-size: 1.9rem;
+ font-weight: 400;
+ line-height: 1;
+ letter-spacing: 1.5px;
+ text-transform: none;
+}
