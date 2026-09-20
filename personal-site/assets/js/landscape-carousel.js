@@ -5,11 +5,9 @@
 
   var photos = [
     { src: 'images/landscape/landscape-01.jpg', portrait: false },
-    { src: 'images/landscape/portrait-04.jpg', portrait: true },
     { src: 'images/landscape/landscape-02.jpg', portrait: false },
     { src: 'images/landscape/landscape-06.jpg', portrait: false },
     { src: 'images/landscape/portrait-01.jpg', portrait: true },
-    { src: 'images/landscape/landscape-03.jpg', portrait: false },
     { src: 'images/landscape/portrait-06.jpg', portrait: true },
     { src: 'images/landscape/landscape-07.jpg', portrait: false },
     { src: 'images/landscape/portrait-03.jpg', portrait: true },
