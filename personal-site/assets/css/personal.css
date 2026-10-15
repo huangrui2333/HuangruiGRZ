@@ -9,7 +9,7 @@ html { scroll-behavior: smooth; }
 .section-heading p { text-align: center; color: #717981; margin-bottom: 0; }
 .bio { max-width: 42rem; margin: 0 auto 2rem; }
 #about, #works, #footer { scroll-margin-top: 1rem; }
-.posts .image img { aspect-ratio: 508 / 310; object-fit: cover; }
+.posts .image img { aspect-ratio: 508 / 310; object-fit: contain; background: #f5f5f5; }
 details { text-align: left; }
 summary { width: fit-content; margin: 0 auto; border: 2px solid #212931; padding: .65rem 1.5rem; cursor: pointer; font-size: .85rem; font-weight: 700; }
 summary:hover { color: #167d9a; border-color: #167d9a; }
@@ -25,6 +25,117 @@ a:focus-visible, summary:focus-visible { outline: 3px solid #18bfef; outline-off
 #footer.portfolio-footer { display: flex; align-items: center; justify-content: space-between; padding: 2rem 3rem; gap: 1.5rem; }
 #footer.portfolio-footer p { margin: 0; }
 #photography, #design { scroll-margin-top: 1rem; }
+
+/* Grouped Amazon image showcase. */
+.amazon-showcase {
+ padding: 3rem;
+ background: #111313;
+ color: #fff;
+}
+.amazon-showcase-heading { margin-bottom: 2rem; text-align: center; }
+.amazon-showcase-heading .eyebrow { margin-bottom: .7rem; color: #c5aa5b; }
+.amazon-showcase-heading h2 { margin: 0; color: #fff; font-size: 1.9rem; letter-spacing: .08em; }
+.amazon-showcase-heading p { margin: .7rem 0 0; color: #8f9694; font: 700 .68rem/1.5 "Segoe UI", sans-serif; letter-spacing: .18em; text-align: center; }
+.amazon-showcase-group { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+.amazon-showcase-group[hidden] { display: none; }
+.amazon-showcase-group a { display: block; overflow: hidden; border: 1px solid #303534; background: #080909; }
+.amazon-showcase-group img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: contain; transition: transform .35s ease, opacity .35s ease; }
+.amazon-showcase-group a:hover img { transform: scale(1.025); opacity: .9; }
+.amazon-showcase-controls { display: flex; align-items: center; justify-content: center; gap: 1.25rem; margin-top: 2rem; }
+.amazon-showcase-controls button { min-width: 0; height: 2.4rem; padding: 0 .8rem; border: 1px solid #4b514f; background: transparent; color: #aab0ae !important; font: 700 .65rem/2.3rem "Segoe UI", sans-serif; letter-spacing: .12em; box-shadow: none; }
+.amazon-showcase-controls button:hover,
+.amazon-showcase-controls button.is-active { border-color: #c5aa5b; color: #fff !important; }
+.amazon-showcase-pages { display: flex; gap: .5rem; }
+.amazon-showcase-arrow { width: 2.4rem; padding: 0 !important; font-size: .9rem !important; }
+@media (max-width: 736px) {
+ .amazon-showcase { padding: 2.5rem 1.5rem; }
+ .amazon-showcase-group { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .7rem; }
+ .amazon-showcase-heading h2 { font-size: 1.45rem; }
+ .amazon-showcase-controls { gap: .65rem; }
+}
+
+/* Editorial banner above the image portfolio, inspired by a classic catalogue layout. */
+.image-feature-banner {
+ display: grid;
+ grid-template-columns: 1fr;
+ padding: 0 3rem 3rem;
+ background: #fff;
+}
+.image-feature-visual {
+ position: relative;
+ display: block;
+ height: 8rem;
+ overflow: hidden;
+ border: 0;
+ background: #e8e8e8;
+}
+.image-feature-visual img {
+ display: block;
+ width: 100%;
+ height: 100%;
+ object-fit: cover;
+ object-position: center;
+ transition: transform .45s ease;
+}
+.image-feature-visual:hover img { transform: scale(1.025); }
+.image-feature-index {
+ position: absolute;
+ right: .6rem;
+ bottom: .6rem;
+ padding: .3rem .55rem;
+ background: rgba(255,255,255,.9);
+ color: #263039;
+ font: 700 .7rem/1 "Segoe UI", sans-serif;
+ letter-spacing: .14em;
+}
+.image-feature-copy {
+ display: flex;
+ padding: .5rem;
+ background: #788a62;
+ color: #fff;
+}
+.image-feature-copy-inner {
+ display: flex;
+ width: 100%;
+ min-height: 0;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ padding: .5rem 1rem;
+ border: 1px dotted rgba(255,255,255,.85);
+ text-align: center;
+}
+.image-feature-kicker {
+ font: 700 .55rem/1.2 "Segoe UI", sans-serif;
+ letter-spacing: .24em;
+}
+.image-feature-copy h2 {
+ margin: .15rem 0 0;
+ color: #fff;
+ font-size: clamp(1.7rem, 3vw, 2.5rem);
+ line-height: .95;
+ letter-spacing: -.045em;
+}
+.image-feature-copy p {
+ margin: .25rem 0 .35rem;
+ color: #eef09f;
+ font: 800 .7rem/1.05 "Segoe UI", sans-serif;
+ letter-spacing: .06em;
+ text-align: center;
+}
+.image-feature-link {
+ color: #fff !important;
+ border-bottom-color: rgba(255,255,255,.7);
+ font: 700 .55rem/1.3 "Segoe UI", sans-serif;
+ letter-spacing: .12em;
+}
+.image-feature-link:hover { color: #eef09f !important; border-bottom-color: #eef09f; }
+@media (max-width: 736px) {
+ .image-feature-banner { grid-template-columns: 1fr; gap: .8rem; padding: 0 1.5rem 2.5rem; }
+ .image-feature-visual { height: 7rem; }
+ .image-feature-copy-inner { min-height: 7rem; }
+ .image-feature-copy h2 { font-size: 2rem; }
+}
 #main > #photography { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
 #main > #photography > article { width: auto; padding: 2rem 1.25rem; border-left: solid 1px #eeeeee; }
 #main > #photography > article:nth-child(odd) { border-left-width: 1px; }
@@ -39,6 +150,52 @@ a:focus-visible, summary:focus-visible { outline: 3px solid #18bfef; outline-off
  #main > #photography > article { width: auto; padding: 1.25rem .6rem; }
  #photography .button { padding: 0 .55rem; font-size: .65rem; }
  #photography .album-description { font-size: .78rem; line-height: 1.6; }
+}
+
+/* Alternating editorial presentation for the four product-image collections. */
+#main > #photography.photography-editorial { display: block; padding: 0 3rem 4rem; background: #f3f1ec; }
+#main > #photography.photography-editorial > .photo-story {
+ display: grid;
+ grid-template-columns: minmax(12rem, .62fr) minmax(0, 1.75fr);
+ align-items: center;
+ gap: 2.5rem;
+ width: auto;
+ padding: 3.5rem 0;
+ border: 0;
+ border-top: 1px solid #d7d2c8;
+}
+#main > #photography.photography-editorial > .photo-story:first-child { border-top: 0; }
+.photo-story-copy { padding: 1rem; text-align: left; }
+.photo-story:nth-child(even) .photo-story-copy { order: 2; }
+.photo-story:nth-child(even) .photo-story-mosaic { order: 1; }
+@media (min-width: 981px) {
+ #main > #photography.photography-editorial > .photo-story:nth-child(even) {
+  grid-template-columns: minmax(0, 1.75fr) minmax(12rem, .62fr);
+ }
+}
+.photo-story-label { display: block; margin-bottom: 1rem; color: #9b7a45; font: 800 .65rem/1.5 "Segoe UI", sans-serif; letter-spacing: .2em; }
+.photo-story-copy h3 { margin: 0 0 1rem; font-size: clamp(1.7rem, 3vw, 2.5rem); line-height: 1.2; letter-spacing: .06em; }
+.photo-story-copy p { margin: 0 0 1.6rem; color: #696964; font-size: .92rem; line-height: 1.9; text-align: left; }
+.photo-story-link { color: #252a2e !important; border-bottom: 1px solid #9b7a45; font: 800 .7rem/1.7 "Segoe UI", sans-serif; letter-spacing: .1em; }
+.photo-story-link span { display: inline-block; margin-left: .45rem; transition: transform .25s ease; }
+.photo-story-link:hover span { transform: translateX(.3rem); }
+.photo-story-mosaic { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(8rem, 12rem)); gap: .65rem; min-width: 0; }
+.photo-story-mosaic a { display: block; min-width: 0; overflow: hidden; border: 0; background: #dedbd4; }
+.photo-story-mosaic .photo-story-main { grid-column: span 2; grid-row: span 2; }
+.photo-story-mosaic img { display: block; width: 100%; height: 100%; object-fit: contain; transition: filter .4s ease; }
+.photo-story-mosaic a:hover img { filter: contrast(1.04); }
+@media (max-width: 980px) {
+ #main > #photography.photography-editorial > .photo-story { grid-template-columns: 1fr; gap: 1.5rem; }
+ .photo-story-copy, .photo-story:nth-child(even) .photo-story-copy { order: 1; padding: 0; text-align: center; }
+ .photo-story-mosaic, .photo-story:nth-child(even) .photo-story-mosaic { order: 2; }
+ .photo-story-copy p { max-width: 34rem; margin-right: auto; margin-left: auto; text-align: center; }
+}
+@media (max-width: 736px) {
+ #main > #photography.photography-editorial { padding: 0 1.25rem 3rem; }
+ #main > #photography.photography-editorial > .photo-story { padding: 2.5rem 0; }
+ .photo-story-mosaic { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: 16rem repeat(2, 9rem); }
+ .photo-story-mosaic .photo-story-main { grid-column: span 2; grid-row: span 1; }
+ .photo-story-copy h3 { font-size: 1.65rem; }
 }
 @media (max-width: 736px) { #footer.portfolio-footer { flex-direction: column; padding: 2rem; } }
 /* Photography album */
@@ -312,6 +469,8 @@ a:focus-visible, summary:focus-visible { outline: 3px solid #18bfef; outline-off
 
 /* Portrait windows for long product detail images. */
 .design-posts .image.preview-long { position: relative; display: block; aspect-ratio: 3 / 5; overflow: hidden; background: #f5f5f5; border: 1px solid #e5e5e5; }
-.design-posts .image.preview-long img { display: block; width: 100%; height: 100%; aspect-ratio: auto; object-fit: cover; object-position: center top; }
+.design-posts .image.preview-long img { display: block; width: 100%; height: 100%; aspect-ratio: auto; object-fit: contain; object-position: center top; }
+.amazon-showcase-group a:hover img,
+.design-posts .image.preview-long:hover img { transform: none; }
 .design-posts .preview-long::after { content: ""; position: absolute; inset: auto 0 0; height: 4rem; background: linear-gradient(transparent, rgba(0,0,0,.45)); pointer-events: none; }
 .long-preview-label { position: absolute; z-index: 1; bottom: .8rem; left: 0; width: 100%; color: #fff; font-size: .7rem; font-weight: 600; letter-spacing: .08em; text-align: center; }
